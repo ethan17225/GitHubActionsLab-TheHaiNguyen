@@ -1,64 +1,60 @@
 name: Multi-Platform Testing
 
-# Trigger: Pull Request to the main branch
 on:
   pull_request:
     branches: [ "main" ]
 
 jobs:
-  # Job 1: Ubuntu
   ubuntu-job:
     name: Run on Ubuntu
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        [cite_start]uses: actions/checkout@v4
-
+        uses: actions/checkout@v4
+      
       - name: Print OS Info
-        [cite_start]run: echo "Running on Ubuntu Linux"
-
+        run: echo "Running on Ubuntu Linux"
+        
       - name: Show System Info
-        [cite_start]run: uname -a
-
+        run: uname -a
+        
       - name: Create and Show File
         run: |
           echo "Hello from Linux" > linux-artifact.txt
-          cat linux-artifact.txt [cite: 41]
+          cat linux-artifact.txt
 
-  # Job 2: Windows
   windows-job:
     name: Run on Windows
     runs-on: windows-latest
     steps:
       - name: Checkout Code
-        [cite_start]uses: actions/checkout@v4
-
+        uses: actions/checkout@v4
+      
       - name: Print OS Info
-        [cite_start]run: echo "Running on Windows"
-
+        run: echo "Running on Windows"
+        
       - name: Show System Info
-        [cite_start]run: systeminfo
-
+        run: systeminfo
+        
       - name: Create and Show File
         run: |
           echo "Hello from Windows" > win-artifact.txt
-          type win-artifact.txt [cite: 41]
+          type win-artifact.txt
 
-  # Job 3: macOS
   macos-job:
     name: Run on macOS
     runs-on: macos-latest
     steps:
       - name: Checkout Code
-        [cite_start]uses: actions/checkout@v4
-
+        uses: actions/checkout@v4
+      
       - name: Print OS Info
-        [cite_start]run: echo "Running on macOS"
-
+        run: echo "Running on macOS"
+        
       - name: Show System Info
-        [cite_start]run: uname -a
-
+        run: uname -a
+        
       - name: Create and Show File
         run: |
           echo "Hello from macOS" > mac-artifact.txt
-          cat mac-artifact.txt [cite: 41]
+          cat mac-artifact.txt
