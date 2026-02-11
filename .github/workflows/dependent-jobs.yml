@@ -1,0 +1,48 @@
+name: Job Dependencies Workflow
+
+# Trigger: Push to the main branch [cite: 13]
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  # Job 1: Build
+  build:
+    name: Build Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start Build
+        run: echo "Starting the build process..."
+      
+      - name: Simulate Build
+        run: |
+          echo "Building application..."
+          sleep 5  # Simulates time taken to build
+
+  # Job 2: Test (Depends on Build)
+  test:
+    name: Test Job
+    needs: build  # Defines dependency on 'build'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start Testing
+        run: echo "Initiating test suite..."
+
+      - name: Run Tests
+        run: |
+          echo "Running tests..."
+          sleep 5  # Simulates testing time
+
+  # Job 3: Deploy (Depends on Test)
+  deploy:
+    name: Deploy Job
+    needs: test  # Defines dependency on 'test'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start Deployment
+        run: echo "Preparing to deploy..."
+
+      - name: Deploy Application
+        run: |
+          echo "Deploying application..."
+          sleep 5  # Simulates deployment time
