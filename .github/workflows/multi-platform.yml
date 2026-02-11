@@ -1,0 +1,64 @@
+name: Multi-Platform Testing
+
+# Trigger: Pull Request to the main branch
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  # Job 1: Ubuntu
+  ubuntu-job:
+    name: Run on Ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        [cite_start]uses: actions/checkout@v4 [cite: 37]
+
+      - name: Print OS Info
+        [cite_start]run: echo "Running on Ubuntu Linux" [cite: 38]
+
+      - name: Show System Info
+        [cite_start]run: uname -a [cite: 39]
+
+      - name: Create and Show File
+        run: |
+          echo "Hello from Linux" > linux-artifact.txt
+          cat linux-artifact.txt [cite: 41]
+
+  # Job 2: Windows
+  windows-job:
+    name: Run on Windows
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Code
+        [cite_start]uses: actions/checkout@v4 [cite: 37]
+
+      - name: Print OS Info
+        [cite_start]run: echo "Running on Windows" [cite: 38]
+
+      - name: Show System Info
+        [cite_start]run: systeminfo [cite: 40]
+
+      - name: Create and Show File
+        run: |
+          echo "Hello from Windows" > win-artifact.txt
+          type win-artifact.txt [cite: 41]
+
+  # Job 3: macOS
+  macos-job:
+    name: Run on macOS
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Code
+        [cite_start]uses: actions/checkout@v4 [cite: 37]
+
+      - name: Print OS Info
+        [cite_start]run: echo "Running on macOS" [cite: 38]
+
+      - name: Show System Info
+        [cite_start]run: uname -a [cite: 39]
+
+      - name: Create and Show File
+        run: |
+          echo "Hello from macOS" > mac-artifact.txt
+          cat mac-artifact.txt [cite: 41]
